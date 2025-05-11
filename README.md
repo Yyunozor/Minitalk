@@ -119,8 +119,36 @@ int main(int argc, char **argv) {
 The server will need to:
 
 1. Receive bits (SIGUSR1/SIGUSR2)
-2. Reconstruct characters bit by bit
-3. Print the message once completely received
+2. Buffer the bits until a complete character is formed (8 bits)
+3. Convert the buffered bits to a character and display it
+4. Clear the buffer for the next character
+
+A sample buffer implementation might look like:
+
+```c
+// Global variables
+static int g_bit_count = 0;
+static unsigned char g_char_buffer = 0;
+
+void handle_signal(int signum) {
+    // Shift buffer and add new bit
+    g_char_buffer <<= 1;
+    if (signum == SIGUSR2)
+        g_char_buffer |= 1;  // Set bit to 1 for SIGUSR2
+    
+    g_bit_count++;
+    
+    // When we have a complete character (8 bits)
+    if (g_bit_count == 8) {
+        // Display the character
+        write(1, &g_char_buffer, 1);
+        
+        // Reset buffer and counter for next character
+        g_char_buffer = 0;
+        g_bit_count = 0;
+    }
+}
+```
 
 The client will need to:
 
