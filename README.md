@@ -225,9 +225,94 @@ Remember that signals are asynchronous by nature, which makes this project parti
 
 ---
 
-## 📚 Resources
+## 📁 Project Structure
 
-- UNIX Signal programming: `man 7 signal`
-- Signal functions: `man 2 signal`, `man 2 sigaction`, `man 2 kill`, `man 2 pause`
-- Process information: `man 2 getpid`
-- Binary manipulation: bitwise operators in C
+Here's the recommended file structure for the Minitalk project:
+
+```plaintext
+Minitalk/
+├── Makefile              # Build rules for the project
+├── README.md             # Project documentation
+├── include/
+│   └── minitalk.h        # Header file with shared definitions
+├── src/
+│   ├── client.c          # Client implementation
+│   └── server.c          # Server implementation
+└── bonus/                # (Optional) Bonus implementations
+    ├── client_bonus.c    # Client with bonus features
+    └── server_bonus.c    # Server with bonus features
+```
+
+### Essential Components
+
+- **Makefile**: Contains rules to compile both client and server
+- **minitalk.h**: Shared header with signal definitions and function prototypes
+- **client.c**: Implementation of the client that sends messages
+- **server.c**: Implementation of the server that receives and displays messages
+
+## 📊 Detailed Project Structure
+
+Here's a comprehensive view of the project files with their contents:
+
+```plaintext
+Minitalk/
+│
+├── Makefile              # Build configuration
+│   ├── all: Build both client and server
+│   ├── clean: Remove object files
+│   ├── fclean: Remove object files and executables
+│   └── re: Rebuild from scratch
+│
+├── include/
+│   └── minitalk.h        # Shared header file
+│       ├── Includes: <signal.h>, <unistd.h>, etc.
+│       ├── Function prototypes
+│       └── Common definitions/constants
+│
+├── src/
+│   │
+│   ├── client.c          # Client implementation
+│   │   ├── send_bit(): Sends a single bit via signals
+│   │   ├── send_char(): Converts char to bits and sends
+│   │   ├── send_string(): Processes entire string
+│   │   └── main(): Entry point, handles arguments
+│   │
+│   └── server.c          # Server implementation
+│       ├── handle_signal(): Signal handler that buffers bits
+│       ├── setup_signals(): Sets up signal handlers
+│       ├── display_pid(): Shows server PID
+│       └── main(): Entry point, infinite signal waiting loop
+│
+└── bonus/                # Optional bonus implementations
+    ├── client_bonus.c    # Client with acknowledgment support
+    │   ├── handle_ack(): Handles server acknowledgments
+    │   ├── send_bit(): With timeout/retry mechanism
+    │   └── unicode_support(): For handling multi-byte chars
+    │
+    └── server_bonus.c    # Server with enhanced features
+        ├── send_ack(): Sends acknowledgment signals
+        ├── unicode_buffer(): For multi-byte character support
+        └── signal_handler(): With acknowledgment feature
+```
+
+### Development Workflow
+
+1. **Setup Phase**:
+   - Create the directory structure
+   - Create header file with necessary includes/definitions
+   - Implement Makefile
+
+2. **Implementation Phase**:
+   - Implement server.c (signal handling, bit buffering)
+   - Implement client.c (char-to-bit conversion, signal sending)
+   - Test and debug communication
+
+3. **Bonus Phase** (optional):
+   - Add acknowledgment mechanism
+   - Implement Unicode support
+   - Enhance error handling
+
+4. **Testing Phase**:
+   - Test with various inputs
+   - Verify corner cases
+   - Benchmark performance
