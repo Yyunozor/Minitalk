@@ -1,17 +1,46 @@
 # 📡 Minitalk
 
-## Project Overview
+<div align="center">
+  <img src="https://img.shields.io/badge/Language-C-blue" alt="Language">
+  <img src="https://img.shields.io/badge/Project-42-brightgreen" alt="Project">
+  <img src="https://img.shields.io/badge/Status-Completed-success" alt="Status">
+</div>
 
-Minitalk is a small data exchange program that implements client-server communication using UNIX signals. This project focuses on creating a communication protocol that allows messages to be sent between a client and server using only SIGUSR1 and SIGUSR2 signals.
+## 📚 Table of Contents
+- [Introduction](#introduction)
+- [Project Requirements](#project-requirements)
+- [How It Works](#how-it-works)
+- [Installation and Usage](#installation-and-usage)
+- [Implementation Details](#implementation-details)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Bonus Features](#bonus-features)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Lessons Learned](#lessons-learned)
+- [Resources](#resources)
 
-## 🎯 Project Objectives
+## 🌟 Introduction
 
-The primary goal is to develop:
+Minitalk is a communication program that demonstrates the use of UNIX signals for inter-process communication (IPC). This project implements a client-server architecture where:
+- The server displays its Process ID (PID) and waits for signals
+- The client sends a string to the server using ONLY SIGUSR1 and SIGUSR2 signals
+- The server reconstructs and displays the received message
 
-- A server that starts first, printing its PID upon launch
-- A client that takes two parameters: the server PID and a string to send
-- Upon receiving the string, the server must display it
-- Communication must use ONLY SIGUSR1 and SIGUSR2 signals
+What makes this project fascinating is the challenge of transmitting complex data using only two distinct signals - essentially creating a binary communication protocol from scratch!
+
+## 🎯 Project Requirements
+
+### Mandatory Part
+- Create a communication program with a client and server
+- The server must start first and display its PID after launch
+- The client takes two parameters:
+  - The server PID
+  - The string to send to the server
+- The client must send the string to the server using ONLY SIGUSR1 and SIGUSR2 signals
+- The server must display the received string
+- The server should be able to receive strings from multiple clients in succession
+- Communication must be acknowledged (bonus)
+- Unicode characters support (bonus)
 
 ## 📊 Technical Deep Dive
 
