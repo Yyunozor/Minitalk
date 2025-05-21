@@ -6,7 +6,7 @@
 #    By: anpayot <anpayot@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/17 16:38:02 by anpayot           #+#    #+#              #
-#    Updated: 2025/05/17 20:10:09 by anpayot          ###   ########.fr        #
+#    Updated: 2025/05/21 03:21:31 by anpayot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ INCLUDES = -I.
 SRC_DIR = srcs/
 
 # Source Files
-SRC_SERVER = $(SRC_DIR)server.c
-SRC_CLIENT = $(SRC_DIR)client.c
+SRC_SERVER = $(SRC_DIR)server.c $(SRC_DIR)ft_utils.c
+SRC_CLIENT = $(SRC_DIR)client.c $(SRC_DIR)ft_utils.c
 
 # Object Files
 OBJ_SERVER = $(SRC_SERVER:.c=.o)

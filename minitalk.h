@@ -6,7 +6,7 @@
 /*   By: anpayot <anpayot@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:29:07 by anpayot           #+#    #+#             */
-/*   Updated: 2025/05/17 16:56:51 by anpayot          ###   ########.fr       */
+/*   Updated: 2025/05/21 03:28:31 by anpayot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,25 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "minitalk_comments.h"
 
 # define BIT_DELAY 100
 
-// Server Functions Prototype
+// Utils Functions
+
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
 void	print_pid(void);
-void	init_signal(void);
+int		ft_atoi(const char *str);
+
+// Server Functions
+
 void	x_signal(int signum);
 
-// Client Fucntions Prototype (s for send)
+// Client Functions (s for send)
+
 void	s_bit(int pid, int bit);
 void	s_char(int pid, char c);
-void	s_string(int pid, char *str);
 
 #endif
