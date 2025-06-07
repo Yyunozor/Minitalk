@@ -6,7 +6,7 @@
 /*   By: anpayot <anpayot@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:29:07 by anpayot           #+#    #+#             */
-/*   Updated: 2025/05/21 03:28:31 by anpayot          ###   ########.fr       */
+/*   Updated: 2025/06/07 22:40:58 by anpayot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	x_signal(int signum);
 
 // Client Functions (s for send)
 
-void	s_bit(int pid, int bit);
 void	s_char(int pid, char c);
 
 #endif
